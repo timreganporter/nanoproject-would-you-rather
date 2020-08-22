@@ -1,12 +1,13 @@
 import React from "react";
+import { NavLink } from 'react-router-dom';
 
 const Nav = () => (
   <nav className="ui pointing menu">
-    <a href="/" className="item active">Home</a>
-    <a href="/questions/new" className="item">New Question</a>
-    <a href="/leaderboard" className="item">Leaderboard</a>
+    <NavLink to="/" exact className="item">Home</NavLink>
+    <NavLink to="/questions/new" className="item">New Question</NavLink>
+    <NavLink to="/leaderboard" className="item">Leaderboard</NavLink>
     <div className="right menu">
-      <div className="item">Login</div>
+      <NavLink to="/login" className="item">Login</NavLink>
     </div>
   </nav>
 )
