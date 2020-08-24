@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { handleInitialData } from '../actions/shared';
+import Leaderboard from './Leaderboard';
 import Nav from './Nav';
 import QuestionList from './questions/QuestionList';
 import QuestionCreate from './questions/QuestionCreate';
 import QuestionResults from './questions/QuestionResults';
 import QuestionShow from './questions/QuestionShow';
-import Leaderboard from './Leaderboard';
 import SignIn from './SignIn';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.dispatch(handleInitialData());
+  }
+
   render() {
     return (
       <div className="ui raised very padded text container segment">
@@ -28,4 +34,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(null)(App);
