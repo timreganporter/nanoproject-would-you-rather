@@ -1,5 +1,6 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
+import QuestionListItem from './QuestionListItem';
 
 class QuestionList extends Component {
   renderList() {
@@ -20,6 +21,7 @@ class QuestionList extends Component {
 }
 
 const mapStateToProps = ({ questions }) => {
+  // TODO: get logged in users, param for answered, filter list
   return {
     questionIds: Object.keys(questions)
   };

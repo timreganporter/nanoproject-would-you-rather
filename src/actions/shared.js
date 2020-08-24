@@ -1,12 +1,13 @@
 import { getInitialData } from '../apis';
 import { getQuestions } from './questions';
+import { getUsers } from './users';
 
 export function handleInitialData() {
   return (dispatch) => {
     // TODO: show loading
     return getInitialData()
       .then(({ users, questions }) => {
-        // TODO: dispatch(getUsers(users))
+        dispatch(getUsers(users));
         dispatch(getQuestions(questions));
       });
   }
