@@ -20,6 +20,7 @@ class App extends Component {
       <div className="ui raised very padded text container segment">
         <Router>
           <Nav />
+          <div className="ui middle aligned centered">
           <Switch>
             <Route path="/" exact component={QuestionList} />
             <Route path="/questions/new" exact component={QuestionCreate} />
@@ -28,6 +29,7 @@ class App extends Component {
             <Route path="/leaderboard" exact component={Leaderboard} />
             <Route path="/login" exact component={SignIn} />
           </Switch>
+          </div>
         </Router>
       </div>
     )

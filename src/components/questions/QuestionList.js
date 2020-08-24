@@ -5,16 +5,15 @@ import QuestionListItem from './QuestionListItem';
 class QuestionList extends Component {
   renderList() {
     return this.props.questionIds.map( id => {
-      return <li>{id}</li>
+      return <QuestionListItem id={id} key={id} />
     })
   }
 
   render() {
     return (
-      <div>
-        <ul> List:
+      <div className="ui aligned centered">
+        TK
           { this.renderList() }
-        </ul>
       </div>
     )
   }
@@ -22,6 +21,8 @@ class QuestionList extends Component {
 
 const mapStateToProps = ({ questions }) => {
   // TODO: get logged in users, param for answered, filter list
+  // TODO: sort by most recent
+  // react state for answered/unanswered
   return {
     questionIds: Object.keys(questions)
   };
