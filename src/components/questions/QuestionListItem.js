@@ -23,7 +23,7 @@ class QuestionListItem extends Component {
                 <TextTruncate line={1} truncateText="..." text={question.optionOne.text} />
                 <div className="ui horizontal divider">OR</div>
                 <TextTruncate line={1} truncateText="..." text={question.optionTwo.text} />
-                <Link to={`/questions/${question.id}`} class="ui primary basic button" style={{ marginTop: "1.3rem" }}>
+                <Link to={`/questions/${question.id}`} className="ui primary basic button" style={{ marginTop: "1.3rem" }}>
                   Take Poll
                 </Link>
               </div>
@@ -36,11 +36,9 @@ class QuestionListItem extends Component {
 }
 
 function mapStateToProps({ users, questions }, { id }) {
-  const question = questions[id];
-  return {
-    question: questions[id] || null,
-    asker: users[question.author]
-  }
+  const question = questions[id] || null;
+  const asker = question ? users[question.author] : null;
+  return { question, asker }
 }
 
 export default connect(mapStateToProps)(QuestionListItem);
