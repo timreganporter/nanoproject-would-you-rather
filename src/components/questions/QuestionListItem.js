@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button, Card, Divider, Grid, Header, Image, Segment } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import TextTruncate from 'react-text-truncate';
@@ -8,29 +9,29 @@ class QuestionListItem extends Component {
     const { question, asker } = this.props;
 
     return (
-      <div className="ui centered card fluid">
-        <div className="ui top attached block header">
+      <Card centered fluid>
+        <Header block size='large' textAlign='center'>
           { asker.name } asks:
-        </div>
-        <div className="ui attached segment">
-          <div className="ui internally celled grid">
-            <div className="row">
-              <div className="five wide column">
-                <img src={ asker.avatarURL } alt={ asker.name } className="ui large circular image" />
-              </div>
-              <div className="ten wide column">
-                <h2 className="ui header">Would you rather...</h2>
+        </Header>
+        <Grid celled='internally'>
+          <Grid.Row>
+            <Grid.Column width={5}>
+              <Image src={ asker.avatarURL } alt={ asker.name } size='large' circular />
+            </Grid.Column>
+            <Grid.Column width={10} centered textAlign='center'>
+              <Header as='h2'>Would you rather...</Header>
+              <Segment textAlign="center">
                 <TextTruncate line={1} truncateText="..." text={question.optionOne.text} />
-                <div className="ui horizontal divider">OR</div>
+                <Divider horizontal>or</Divider>
                 <TextTruncate line={1} truncateText="..." text={question.optionTwo.text} />
-                <Link to={`/questions/${question.id}`} className="ui primary basic button" style={{ marginTop: "1.3rem" }}>
-                  Take Poll
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+              </Segment>
+              <Button as={Link} basic primary to={`/questions/${question.id}`} style={{ marginTop: "1.3rem" }}>
+                Take Poll
+              </Button>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Card>
     )
   }
 }
