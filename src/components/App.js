@@ -1,6 +1,8 @@
+import 'semantic-ui-css/semantic.min.css'
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 import { handleInitialData } from '../actions/shared';
 import Leaderboard from './Leaderboard';
 import Nav from './Nav';

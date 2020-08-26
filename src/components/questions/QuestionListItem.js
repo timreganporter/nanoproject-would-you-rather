@@ -9,9 +9,9 @@ class QuestionListItem extends Component {
 
     return (
       <div className="ui centered card fluid">
-          <div className="ui top attached block header">
-            { asker.name } asks:
-          </div>
+        <div className="ui top attached block header">
+          { asker.name } asks:
+        </div>
         <div className="ui attached segment">
           <div className="ui internally celled grid">
             <div className="row">
