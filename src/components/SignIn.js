@@ -8,20 +8,20 @@ class SignIn extends Component {
   state = {
     selectedUser: null,
     buttonDisabled: true
-  }
+  };
 
   handleSelectChange = (_, { value }) => {
     this.setState({
       selectedUser: value,
       buttonDisabled: !value
     });
-  }
+  };
 
   handleClick = event => {
     event.preventDefault();
     this.props.dispatch(setAuthedUser(this.state.selectedUser));
     this.props.history.push('/');
-  }
+  };
 
   renderUsers() {
     const { users } = this.props;
