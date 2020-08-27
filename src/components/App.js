@@ -2,6 +2,7 @@ import 'semantic-ui-css/semantic.min.css'
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
+import LoadingBar from 'react-redux-loading';
 
 import { handleInitialData } from '../actions/shared';
 import Leaderboard from './Leaderboard';
@@ -19,23 +20,33 @@ class App extends Component {
 
   render() {
     return (
-      <div className="ui raised very padded text container segment">
-        <Router>
+      <Router>
+        <LoadingBar />
+        <div className="ui raised very padded text container segment">
           <Nav />
-          <div className="ui middle aligned centered">
-          <Switch>
-            <Route path="/" exact component={QuestionList} />
-            <Route path="/questions/new" exact component={QuestionCreate} />
-            <Route path="/questions/:id/results" exact component={QuestionResults} />
-            <Route path="/questions/:id" exact component={QuestionShow} />
-            <Route path="/leaderboard" exact component={Leaderboard} />
-            <Route path="/login" exact component={SignIn} />
-          </Switch>
-          </div>
-        </Router>
-      </div>
+          {this.props.loading === true
+            ? null
+            : <div className="ui middle aligned centered">
+                <Switch>
+                  <Route path="/" exact component={QuestionList} />
+                  <Route path="/questions/new" exact component={QuestionCreate} />
+                  <Route path="/questions/:id/results" exact component={QuestionResults} />
+                  <Route path="/questions/:id" exact component={QuestionShow} />
+                  <Route path="/leaderboard" exact component={Leaderboard} />
+                  <Route path="/login" exact component={SignIn} />
+                </Switch>
+              </div>
+          }
+        </div>
+      </Router>
     )
   }
 }
 
-export default connect(null)(App);
+function mapStateToProps({ questions }) {
+  return {
+    loading: questions === null
+  };
+}
+
+export default connect(mapStateToProps)(App);

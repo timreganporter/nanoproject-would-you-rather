@@ -1,3 +1,5 @@
+import { showLoading, hideLoading } from 'react-redux-loading';
+
 import { saveQuestionAnswer } from '../apis';
 import { addAnswerToUser } from '../actions/users';
 
@@ -22,14 +24,16 @@ function answerQuestion({ qid, authedUser, answer }) {
 
 export function handleAnswerQuestion(info) {
   return dispatch => {
-    // TODO: show loading
+    dispatch(showLoading());
     return saveQuestionAnswer(info)
       .then( question => {
         dispatch(answerQuestion(info));
         dispatch(addAnswerToUser(info));
        })
+      .then(() => dispatch(hideLoading()))
       .catch( err => {
         console.warn('Error in saving answer ', err);
+        dispatch(hideLoading());
         alert('There was an error in recording your answer. Please try again.');
       });
   };
