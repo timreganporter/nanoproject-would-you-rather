@@ -10,6 +10,7 @@ class SignIn extends Component {
     buttonDisabled: true
   };
 
+
   handleSelectChange = (_, { value }) => {
     this.setState({
       selectedUser: value,
@@ -19,8 +20,10 @@ class SignIn extends Component {
 
   handleClick = e => {
     e.preventDefault();
-    this.props.dispatch(setAuthedUser(this.state.selectedUser));
-    this.props.history.push('/');
+    const { dispatch, history, location } = this.props
+    const { from } = location.state || { from: { pathname: "/" } };
+    dispatch(setAuthedUser(this.state.selectedUser));
+    history.replace(from);
   };
 
   renderUsers() {
