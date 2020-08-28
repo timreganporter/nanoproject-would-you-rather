@@ -17,8 +17,8 @@ class SignIn extends Component {
     });
   };
 
-  handleClick = event => {
-    event.preventDefault();
+  handleClick = e => {
+    e.preventDefault();
     this.props.dispatch(setAuthedUser(this.state.selectedUser));
     this.props.history.push('/');
   };

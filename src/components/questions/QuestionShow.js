@@ -9,7 +9,7 @@ class QuestionShow extends Component {
   handleSubmit = (e, selectedOption) => {
     e.preventDefault();
     const { authedUser, dispatch, } = this.props;
-    const { id } = this.props.match.params;
+    const { id } = this.props.computedMatch.params;
     dispatch(handleAnswerQuestion({
       answer: selectedOption,
       authedUser,
@@ -33,7 +33,7 @@ class QuestionShow extends Component {
 }
 
 function mapStateToProps({ users, questions, authedUser }, props) {
-  const { id } = props.match.params;
+  const { id } = props.computedMatch.params;
   const question = questions[id] || null;
   const asker = question ? users[question.author] : null;
   return { question, asker, authedUser };

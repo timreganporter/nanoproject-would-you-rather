@@ -7,6 +7,7 @@ import LoadingBar from 'react-redux-loading';
 import { handleInitialData } from '../actions/shared';
 import Leaderboard from './Leaderboard';
 import Nav from './Nav';
+import PrivateRoute from './PrivateRoute';
 import QuestionList from './questions/QuestionList';
 import QuestionCreate from './questions/QuestionCreate';
 import QuestionResults from './questions/QuestionResults';
@@ -24,19 +25,18 @@ class App extends Component {
         <LoadingBar />
         <div className="ui raised very padded text container segment">
           <Nav />
-          {this.props.loading === true
-            ? null
-            : <div className="ui middle aligned centered">
-                <Switch>
-                  <Route path="/" exact component={QuestionList} />
-                  <Route path="/questions/new" exact component={QuestionCreate} />
-                  <Route path="/questions/:id/results" exact component={QuestionResults} />
-                  <Route path="/questions/:id" exact component={QuestionShow} />
-                  <Route path="/leaderboard" exact component={Leaderboard} />
-                  <Route path="/login" exact component={SignIn} />
-                </Switch>
-              </div>
-          }
+          {this.props.loading || (
+            <div className="ui middle aligned centered">
+              <Switch>
+                <PrivateRoute path="/" exact component={QuestionList} />
+                <PrivateRoute path="/questions/new" exact component={QuestionCreate} />
+                <PrivateRoute path="/questions/:id/results" exact component={QuestionResults} />
+                <PrivateRoute path="/questions/:id" exact component={QuestionShow} />
+                <Route path="/leaderboard" exact component={Leaderboard} />
+                <Route path="/login" exact component={SignIn} />
+              </Switch>
+            </div>
+          )}
         </div>
       </Router>
     )
@@ -45,7 +45,7 @@ class App extends Component {
 
 function mapStateToProps({ questions }) {
   return {
-    loading: questions === null
+    loading: questions === null,
   };
 }
 

@@ -10,7 +10,7 @@ export const QuestionDisplay = ({ question }) => (
       <Divider horizontal>or...</Divider>
     </Segment>
     <Button as={Link} basic primary to={`/questions/${question.id}`} style={{ marginTop: "1.3rem" }}>
-      Take Poll
+      View Poll
     </Button>
   </React.Fragment>
 )

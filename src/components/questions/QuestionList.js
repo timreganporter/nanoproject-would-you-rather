@@ -1,31 +1,62 @@
 import React, { Component} from 'react';
+import { Button, Segment } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 
 import QuestionListItem from './QuestionListItem';
 
 class QuestionList extends Component {
-  renderList() {
-    return this.props.questionIds.map( id => {
-      return <QuestionListItem id={id} key={id} />
-    })
+  state = {
+    filter: 'Unanswered'
+  }
+
+  handleClick = (e, { value }) => {
+    e.preventDefault();
+    this.setState({ filter: value });
+  }
+
+  renderButton = filter => (
+    <Button
+      active={this.state.filter === filter}
+      onClick={this.handleClick}
+      primary={this.state.filter === filter}
+      value={filter}
+    >
+      {filter}
+    </Button>
+  )
+
+  filterQuestions = () => {
+    const { authedUser, questions } = this.props;
+    const answerFilter = this.state.filter === 'Answered';
+    return Object.keys(questions)
+      .filter( id => authedUser.answers.hasOwnProperty(id) === answerFilter)
+      .map( id => {
+        return <QuestionListItem id={id} key={id} />
+      })
   }
 
   render() {
     return (
-      <div className="ui aligned centered">
-        TK
-          { this.renderList() }
-      </div>
+      <Segment>
+        <Button.Group attached='top'>
+          {this.renderButton('Unanswered')}
+          {this.renderButton('Answered')}
+        </Button.Group>
+        <Segment attached>
+          { this.filterQuestions() }
+        </Segment>
+      </Segment>
     )
   }
 }
 
-const mapStateToProps = ({ questions }) => {
+const mapStateToProps = ({ authedUser, questions, users }) => {
   // TODO: get logged in users, param for answered, filter list
   // TODO: sort by most recent
   // react state for answered/unanswered
   return {
-    questionIds: Object.keys(questions)
+    questions,
+    authedUser: users[authedUser]
   };
 };
 
