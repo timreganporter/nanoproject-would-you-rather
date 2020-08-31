@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { handleAnswerQuestion } from '../../actions/questions';
-import QuestionForm from './QuestionForm';
+import QuestionAnswerForm from './QuestionAnswerForm';
 import QuestionResults from './QuestionResults';
 import QuestionTemplate from './QuestionTemplate';
 
@@ -29,7 +29,7 @@ class QuestionShow extends Component {
       <QuestionTemplate asker={asker} >
         {userAnswer
           ? <QuestionResults question={question} userAnswer={userAnswer} />
-          : <QuestionForm authedUser={authedUser} handleSubmit={this.handleSubmit} question={question} />
+          : <QuestionAnswerForm authedUser={authedUser} handleSubmit={this.handleSubmit} question={question} />
         }
       </QuestionTemplate>
     );

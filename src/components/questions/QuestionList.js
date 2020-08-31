@@ -30,9 +30,12 @@ class QuestionList extends Component {
     const answerFilter = this.state.filter === 'Answered';
     return Object.keys(questions)
       .filter( id => authedUser.answers.hasOwnProperty(id) === answerFilter)
+      .sort( (a,b) => {
+        return questions[b].timestamp - questions[a].timestamp
+      })
       .map( id => {
         return <QuestionListItem id={id} key={id} />
-      })
+      });
   }
 
   render() {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Divider, Form, Radio, Segment } from 'semantic-ui-react'
 
-class QuestionForm extends Component {
+class QuestionAnswerForm extends Component {
   state = {
     selectedOption: null
   };
@@ -46,4 +46,4 @@ class QuestionForm extends Component {
   }
 }
 
-export default QuestionForm;
+export default QuestionAnswerForm;
