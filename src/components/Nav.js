@@ -21,7 +21,7 @@ class Nav extends Component {
     const { authedUser } = this.props;
 
     return (
-      <Menu pointing stackable>
+      <Menu color='teal' pointing stackable>
         <NavLink to="/" exact className="item">Home</NavLink>
         <NavLink to="/questions/new" className="item">New Question</NavLink>
         <NavLink to="/leaderboard" className="item">Leaderboard</NavLink>
