@@ -33,7 +33,7 @@ class App extends Component {
                 <PrivateRoute path="/questions/new" exact component={QuestionCreate} />
                 <PrivateRoute path="/questions/:id/results" exact component={QuestionResults} />
                 <PrivateRoute path="/questions/:id" exact component={QuestionShow} />
-                <Route path="/leaderboard" exact component={Leaderboard} />
+                <PrivateRoute path="/leaderboard" exact component={Leaderboard} />
                 <Route path="/login" exact component={SignIn} />
                 <Route path="/404" exact component={NotFound} />
               </Switch>
