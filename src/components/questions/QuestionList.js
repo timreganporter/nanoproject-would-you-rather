@@ -40,7 +40,7 @@ class QuestionList extends Component {
 
   render() {
     return (
-      <Segment>
+      <React.Fragment>
         <Button.Group attached='top'>
           {this.renderButton('Unanswered')}
           {this.renderButton('Answered')}
@@ -48,7 +48,7 @@ class QuestionList extends Component {
         <Segment attached>
           { this.filterQuestions() }
         </Segment>
-      </Segment>
+      </React.Fragment>
     )
   }
 }

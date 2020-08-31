@@ -32,7 +32,7 @@ class FlashMessage extends Component {
         success={type === 'success'} // Recommended future TODO: handle error flashes
         content={text}
         onDismiss={this.handleDismiss}
-        style={{ margin: '1.3rem, 0' }}
+        style={{ margin: '1.3rem 0' }}
       />
     );
   }
