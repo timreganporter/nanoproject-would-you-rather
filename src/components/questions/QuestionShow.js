@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
+import { addFlashMessage } from '../../actions/flashMessages';
 import { handleAnswerQuestion } from '../../actions/questions';
 import QuestionAnswerForm from './QuestionAnswerForm';
 import QuestionResults from './QuestionResults';
@@ -16,6 +17,10 @@ class QuestionShow extends Component {
       answer: selectedOption,
       authedUser,
       qid: id
+    }));
+    dispatch(addFlashMessage({
+      type: 'success',
+      text: 'Thanks for taking the poll. See all results below.'
     }));
   };
 

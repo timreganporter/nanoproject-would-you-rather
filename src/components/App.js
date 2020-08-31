@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LoadingBar from 'react-redux-loading';
 
+import { addFlashMessage } from '../actions/flashMessages';
+import FlashMessagesList from './FlashMessagesList';
 import { handleInitialData } from '../actions/shared';
 import Leaderboard from './Leaderboard';
 import Nav from './Nav';
@@ -28,13 +30,14 @@ class App extends Component {
           <Nav />
           {this.props.loading || (
             <div className="ui middle aligned centered">
+              <FlashMessagesList />
               <Switch>
                 <PrivateRoute path="/" exact component={QuestionList} />
                 <PrivateRoute path="/questions/new" exact component={QuestionCreate} />
                 <PrivateRoute path="/questions/:id/results" exact component={QuestionResults} />
                 <PrivateRoute path="/questions/:id" exact component={QuestionShow} />
                 <PrivateRoute path="/leaderboard" exact component={Leaderboard} />
-                <Route path="/login" exact component={SignIn} />
+                <Route path="/login" exact component={SignIn} addFlashMessage={addFlashMessage} />
                 <Route path="/404" exact component={NotFound} />
               </Switch>
             </div>

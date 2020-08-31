@@ -2,6 +2,7 @@ import React, { Component} from 'react';
 import { Card, Divider, Form, Header } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom';
 
+import { addFlashMessage } from '../../actions/flashMessages';
 import { handleAddQuestion } from '../../actions/questions';
 
 class QuestionCreate extends Component {
@@ -17,10 +18,15 @@ class QuestionCreate extends Component {
   }
 
   handleSubmit = e => {
+    const { dispatch } = this.props;
     e.preventDefault();
-    this.props.dispatch(
+    dispatch(
       handleAddQuestion(this.state.optionOne, this.state.optionTwo)
     );
+    dispatch(addFlashMessage({
+      type: 'success',
+      text: 'Thanks! Your question has been added.'
+    }));
     this.props.history.push("/");
   }
 

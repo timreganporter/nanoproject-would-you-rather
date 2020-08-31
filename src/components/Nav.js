@@ -3,12 +3,18 @@ import { connect } from 'react-redux';
 import { Dropdown, Icon, Image, Menu } from 'semantic-ui-react';
 import { NavLink, withRouter } from 'react-router-dom';
 
+import { addFlashMessage } from '../actions/flashMessages';
 import { removeAuthedUser } from '../actions/authedUser';
 
 class Nav extends Component {
   handleLogout = () => {
-    this.props.dispatch(removeAuthedUser());
-    this.props.history.push('/login');
+    const { dispatch, history } = this.props;
+    dispatch(removeAuthedUser());
+    dispatch(addFlashMessage({
+      type: 'success',
+      text: 'You have been logged out. You may sign in again below.'
+    }));
+    history.push('/login');
   };
 
   render() {

@@ -2,6 +2,7 @@ import React, { Component} from 'react';
 import { Button, Card, Dropdown, Header, Icon } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
+import { addFlashMessage } from '../actions/flashMessages';
 import { setAuthedUser } from '../actions/authedUser';
 
 class SignIn extends Component {
@@ -20,9 +21,13 @@ class SignIn extends Component {
 
   handleClick = e => {
     e.preventDefault();
-    const { dispatch, history, location } = this.props
+    const { dispatch, history, location} = this.props
     const { from } = location.state || { from: { pathname: "/" } };
     dispatch(setAuthedUser(this.state.selectedUser));
+    dispatch(addFlashMessage({
+      type: 'success',
+      text: 'You have signed in successfully.'
+    }));
     history.replace(from);
   };
 
