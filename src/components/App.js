@@ -7,6 +7,7 @@ import LoadingBar from 'react-redux-loading';
 import { handleInitialData } from '../actions/shared';
 import Leaderboard from './Leaderboard';
 import Nav from './Nav';
+import NotFound from './NotFound';
 import PrivateRoute from './PrivateRoute';
 import QuestionList from './questions/QuestionList';
 import QuestionCreate from './questions/QuestionCreate';
@@ -34,6 +35,7 @@ class App extends Component {
                 <PrivateRoute path="/questions/:id" exact component={QuestionShow} />
                 <Route path="/leaderboard" exact component={Leaderboard} />
                 <Route path="/login" exact component={SignIn} />
+                <Route path="/404" exact component={NotFound} />
               </Switch>
             </div>
           )}

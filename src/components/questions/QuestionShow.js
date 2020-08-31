@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import { handleAnswerQuestion } from '../../actions/questions';
 import QuestionAnswerForm from './QuestionAnswerForm';
@@ -22,7 +23,7 @@ class QuestionShow extends Component {
     const { asker, authedUser, question, userAnswer } = this.props;
 
     if (!this.props.question) {
-      return null;
+      return <Redirect to='/404' />;
     }
 
     return (
