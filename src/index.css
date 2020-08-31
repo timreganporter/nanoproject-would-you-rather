@@ -1,1 +1,11 @@
-/* placeholder */
+#gold {
+  border-color: #d4af37 !important;
+}
+
+#silver {
+  border-color: #aaa9ad;
+}
+
+#bronze {
+  border-color: #a97142;
+}
