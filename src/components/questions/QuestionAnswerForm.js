@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Divider, Form, Radio, Segment } from 'semantic-ui-react'
+import PropTypes from 'prop-types';
 
 class QuestionAnswerForm extends Component {
   state = {
@@ -44,6 +45,11 @@ class QuestionAnswerForm extends Component {
       </Segment>
     );
   }
+}
+
+QuestionAnswerForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  question: PropTypes.object.isRequired
 }
 
 export default QuestionAnswerForm;

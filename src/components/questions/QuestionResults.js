@@ -19,7 +19,7 @@ const QuestionResults = ({ question, userAnswer }) => {
   const renderOption = option => (
       <Segment color={data[option].color}>
         {data[option].text}
-        <Progress percent={data[option].votes/totalVotes*100} color={data[option].color}>
+        <Progress percent={Math.round(data[option].votes/totalVotes*100)} color={data[option].color} progress>
           {data[option].votes} of {totalVotes} votes
         </Progress>
         {userAnswer === option && (

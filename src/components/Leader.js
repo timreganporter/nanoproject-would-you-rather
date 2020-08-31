@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Grid, Header, Image, Label, Popup } from 'semantic-ui-react'
+import PropTypes from 'prop-types';
 
 const Leader = props => {
   const { place, user } = props;
@@ -63,6 +64,11 @@ const Leader = props => {
       {getLabelForPlace(place)}
     </Card>
   )
+}
+
+Leader.propTypes = {
+  place: PropTypes.number.isRequired,
+  user: PropTypes.object.isRequired
 }
 
 export default Leader;

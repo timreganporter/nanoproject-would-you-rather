@@ -47,7 +47,7 @@ function mapStateToProps({ users, questions, authedUser }, props) {
   const question = questions[id] || null;
   const asker = question ? users[question.author] : null;
   const userAnswer = users[authedUser].answers[id];
-  return { asker, authedUser, question, userAnswer};
+  return { asker, authedUser, question, userAnswer };
 }
 
 export default connect(mapStateToProps)(QuestionShow);
