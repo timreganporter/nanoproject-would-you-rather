@@ -5,15 +5,13 @@ import { Message } from 'semantic-ui-react';
 class FlashMessage extends Component {
   state = { visible: true }
 
-  // TODO auto-remove timer
-
   handleDismiss = () => {
     this.setState({ visible: false })
     this.props.deleteFlashMessage(this.props.message.id);
   }
 
   componentDidMount() {
-    this.timer = setTimeout(() => this.handleDismiss(), 5000);
+    this.timer = setTimeout(() => this.handleDismiss(), this.props.duration);
   }
 
   componentWillUnmount() {
@@ -40,7 +38,12 @@ class FlashMessage extends Component {
 
 FlashMessage.propTypes = {
   message: PropTypes.object.isRequired,
-  deleteFlashMessage: PropTypes.func.isRequired
+  deleteFlashMessage: PropTypes.func.isRequired,
+  duration: PropTypes.number
+}
+
+FlashMessage.defaultProps = {
+  duration: 5000
 }
 
 export default FlashMessage;
