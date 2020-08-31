@@ -54,9 +54,6 @@ class QuestionList extends Component {
 }
 
 const mapStateToProps = ({ authedUser, questions, users }) => {
-  // TODO: get logged in users, param for answered, filter list
-  // TODO: sort by most recent
-  // react state for answered/unanswered
   return {
     questions,
     authedUser: users[authedUser]
