@@ -13,7 +13,6 @@ import NotFound from './NotFound';
 import PrivateRoute from './PrivateRoute';
 import QuestionList from './questions/QuestionList';
 import QuestionCreate from './questions/QuestionCreate';
-import QuestionResults from './questions/QuestionResults';
 import QuestionShow from './questions/QuestionShow';
 import SignIn from './SignIn';
 
@@ -33,8 +32,7 @@ class App extends Component {
               <FlashMessagesList />
               <Switch>
                 <PrivateRoute path="/" exact component={QuestionList} />
-                <PrivateRoute path="/questions/new" exact component={QuestionCreate} />
-                <PrivateRoute path="/questions/:id/results" exact component={QuestionResults} />
+                <PrivateRoute path="/add" exact component={QuestionCreate} />
                 <PrivateRoute path="/questions/:id" exact component={QuestionShow} />
                 <PrivateRoute path="/leaderboard" exact component={Leaderboard} />
                 <Route path="/login" exact component={SignIn} addFlashMessage={addFlashMessage} />

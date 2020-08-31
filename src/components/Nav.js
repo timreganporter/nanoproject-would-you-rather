@@ -23,7 +23,7 @@ class Nav extends Component {
     return (
       <Menu color='teal' pointing stackable>
         <NavLink to="/" exact className="item">Home</NavLink>
-        <NavLink to="/questions/new" className="item">New Question</NavLink>
+        <NavLink to="/add" className="item">New Question</NavLink>
         <NavLink to="/leaderboard" className="item">Leaderboard</NavLink>
         <Menu.Menu position='right'>
           { authedUser
